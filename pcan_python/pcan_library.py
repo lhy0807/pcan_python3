@@ -270,16 +270,16 @@ class PCANBasic:
 		if not self.initialized:
 			ret = pcan_module.open_can(self.can_port)
 			if ret == 0:
-				print 'PCANBasic::Initialize: Port %s opened successfully'%(self.can_port)
+				print('PCANBasic::Initialize: Port %s opened successfully'%(self.can_port))
 				
 				if pcan_module.configure_can() == 0:
-					print 'PCANBasic::Initialize: Port %s configured'%(self.can_port)
+					print('PCANBasic::Initialize: Port %s configured'%(self.can_port))
 					self.initialized = True
 				if pcan_module.get_version_info() == 0:
-					print 'PCANBasic::Initialize: PCAN version info = %s'%(pcan_module.cvar.driver_info)
+					print('PCANBasic::Initialize: PCAN version info = %s'%(pcan_module.cvar.driver_info))
 				
 			else:
-				print 'PCANBasic::Initialize: Error openning port %s'%(self.can_port)
+				print('PCANBasic::Initialize: Error openning port %s'%(self.can_port))
 				return 0x10000
 		
 		return 0
@@ -306,10 +306,10 @@ class PCANBasic:
 		if self.initialized:
 			ret = pcan_module.close_can()
 			if ret == 0:
-				print 'PCANBasic::Uninitialize: Port %s closed successfully'%(self.can_port)
+				print('PCANBasic::Uninitialize: Port %s closed successfully'%(self.can_port))
 				self.initialized = False
 			else:
-				print 'PCANBasic::Uninitialize: Error closing port %s'%(self.can_port)
+				print('PCANBasic::Uninitialize: Error closing port %s'%(self.can_port))
 				return 0x10000
 		
 		return 0
@@ -425,7 +425,7 @@ class PCANBasic:
 		if ret == 0:
 			return 0
 		else:
-			print 'PCANBasic::Write: Error writting on bus'
+			print('PCANBasic::Write: Error writting on bus')
 			return TPCANStatus(0x10000)
 			
 	
